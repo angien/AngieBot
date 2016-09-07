@@ -75,19 +75,20 @@ namespace AngieBot
                 }
                 if (uText.Contains("help"))
                 {
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Here's the list of all the zodiac signs."));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Capricorn: December 22 - January 19"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Aquarius: January 20 - February 18"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Pisces: February 19 - March 20"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Aries: March 21 - April 19"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Taurus: April 20 - May 20"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Gemini: May 21 - June 20"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Cancer: June 21 - July 22"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Leo: July 23 - August 22"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Virgo: August 23 - Septemeber 22"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Libra: September 23 - October 22"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Scorpio: October 23 - November 21"));
-                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Sagittarius: November 22 - December 21"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Here's the list of all the zodiac signs.\n"
+                        + "Capricorn: December 22 - January 19\n"
+                        + "Aquarius: January 20 - February 18\n"
+                        + "Pisces: February 19 - March 20\n"
+                        + "Aries: March 21 - April 19\n"
+                        + "Taurus: April 20 - May 20\n"
+                        + "Gemini: May 21 - June 20\n"
+                        + "Cancer: June 21 - July 22\n"
+                        + "Leo: July 23 - August 22\n"
+                        + "Virgo: August 23 - Septemeber 22\n"
+                        + "Libra: September 23 - October 22\n"
+                        + "Scorpio: October 23 - November 21\n"
+                        + "Sagittarius: November 22 - December 21"));
+
                     understand = true;
                 }
                 
