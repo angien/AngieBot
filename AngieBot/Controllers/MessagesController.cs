@@ -35,9 +35,7 @@ namespace AngieBot
                 {
                     if (uText.Contains(x))
                     {
-                        Activity reply = activity.CreateReply($"Hello! I'm a simple bot made by t-anng that will tell you your horoscope for today. What is your sign?");
-                        await connector.Conversations.ReplyToActivityAsync(reply);
-
+                        await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Hey hey, I'm a simple bot made by t-anng that will tell you your horoscope for today. What is your sign?"));
                         await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"(If you don't know your sign, say 'help')"));
                         understand = true;
                     }
@@ -59,9 +57,13 @@ namespace AngieBot
                                 Console.WriteLine(res.StatusCode.ToString());
                                 string responseString = await res.Content.ReadAsStringAsync();
                                 Horoscope model = JsonConvert.DeserializeObject<Horoscope>(responseString);
+
+                                string prefix = "[' ";
+                                if (model.horoscope.StartsWith(prefix))
+                                    model.horoscope = model.horoscope.Remove(0, prefix.Length);
                                                 
                                 await connector.Conversations.ReplyToActivityAsync(activity.CreateReply(model.horoscope));
-                                await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Special thanks to this Horoscope API: http://tapasweni-pathak.github.io/Horoscope-API/"));
+                                await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Special thanks to this Horoscope API: https://github.com/tapasweni-pathak/Horoscope-API"));
                             }
                             else
                             {
@@ -73,21 +75,19 @@ namespace AngieBot
                 }
                 if (uText.Contains("help"))
                 {
-                    Activity helpReply = activity.CreateReply($"Here's the list of all the zodiac signs.\n\n"
-                        + "Aries: March 21 - April 19\n\n"
-                        + "Taurus: April 20 - May 20\n\n"
-                        + "Gemini: May 21 - June 20\n\n"
-                        + "Cancer: June 21 - July 22\n\n"
-                        + "Leo: July 23 - August 22\n\n"
-                        + "Virgo: August 23 - Septemeber 22\n\n"
-                        + "Libra: September 23 - October 22\n\n"
-                        + "Scorpio: October 23 - November 21\n\n"
-                        + "Sagittarius: November 22 - December 21\n\n"
-                        + "Capricorn: December 22 - January 19\n\n"
-                        + "Aquarius: January 20 - February 18\n\n"
-                        + "Pisces: February 19 - March 20");
-
-                    await connector.Conversations.ReplyToActivityAsync(helpReply);
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Here's the list of all the zodiac signs."));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Capricorn: December 22 - January 19"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Aquarius: January 20 - February 18"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Pisces: February 19 - March 20"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Aries: March 21 - April 19"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Taurus: April 20 - May 20"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Gemini: May 21 - June 20"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Cancer: June 21 - July 22"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Leo: July 23 - August 22"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Virgo: August 23 - Septemeber 22"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Libra: September 23 - October 22"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Scorpio: October 23 - November 21"));
+                    await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Sagittarius: November 22 - December 21"));
                     understand = true;
                 }
                 
@@ -95,7 +95,6 @@ namespace AngieBot
                 {
                     await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"Sorry, I couldn't understand what you said."));
                     await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"I'm a simple bot made by t-anng that will tell you your horoscope for today. What is your sign?"));
-
                     await connector.Conversations.ReplyToActivityAsync(activity.CreateReply($"(If you don't know your sign, say 'help'.)"));
                 }
             }
