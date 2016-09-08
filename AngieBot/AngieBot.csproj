@@ -115,6 +115,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bootstrap.min.css" />
+    <Content Include="Assets\default.css" />
+    <Content Include="Assets\ie10-viewport-bug-workaround.css" />
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -140,6 +143,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
